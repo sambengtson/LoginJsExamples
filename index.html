@@ -1,0 +1,110 @@
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <form>
+        First name: <input type="text" name="fname__101" id="fname__101"><br>
+
+
+
+        <input type="radio" value="0" name="fname__101" class="loginControl" checked>Answer now
+
+        <input type="radio" value="1" name="fname__101" class="loginControl">Answer later
+
+        <input type="radio" value="2" name="fname__101" class="loginControl">Not tracked
+
+        <input type="radio" value="2" name="fname__101" class="loginControl">Not the way we track it
+
+        <br> Last name: <input type="text" name="lname__102" id="lname__102"><br>
+
+
+
+        <input type="radio" name="lname__102" value="0" class="loginControl" checked>Answer now
+
+        <input type="radio" name="lname__102" value="1" class="loginControl">Answer later
+
+        <input type="radio" name="lname__102" value="2" class="loginControl">Not tracked
+
+        <input type="radio" name="lname__102" value="2" class="loginControl">Not the way we track it
+
+        <br> Last name: <input type="text" name="lname__103" id="lname__103"><br>
+
+
+
+        <input type="radio" name="lname__103" value="0" class="loginControl" checked>Answer now
+
+        <input type="radio" name="lname__103" value="1" class="loginControl">Answer later
+
+        <input type="radio" name="lname__103" value="2" class="loginControl">Not tracked
+
+        <input type="radio" name="lname__103" value="2" class="loginControl">Not the way we track it
+
+        <br> Last name: <input type="text" name="lname__104" id="lname__104"><br>
+
+
+
+        <input type="radio" name="lname__104" value="0" class="loginControl" checked>Answer now
+
+        <input type="radio" name="lname__104" value="1" class="loginControl">Answer later
+
+        <input type="radio" name="lname__104" value="2" class="loginControl">Not tracked
+
+        <input type="radio" name="lname__104" value="2" class="loginControl">Not the way we track it
+
+        <br> Last name: <input type="text" name="lname__105" id="lname__105"><br>
+
+
+
+        <input type="radio" name="lname__105" value="0" class="loginControl" checked>Answer now
+
+        <input type="radio" name="lname__105" value="1" class="loginControl">Answer later
+
+        <input type="radio" name="lname__105" value="2" class="loginControl">Not tracked
+
+        <input type="radio" name="lname__105" value="2" class="loginControl">Not the way we track it
+
+        <br> Last name: <input type="text" name="lname__106" id="lname__106"><br>
+
+
+
+        <input type="radio" name="lname__106" value="0" class="loginControl" >Answer now
+
+        <input type="radio" name="lname__106" value="1" class="loginControl" >Answer later
+
+        <input type="radio" name="lname__106" value="2" class="loginControl" >Not tracked
+
+        <input type="radio" name="lname__106" value="2" class="loginControl" >Not the way we track
+        it
+
+        <br>
+    </form>
+
+    <script>
+        $(document).ready(function(){
+            console.log("jquery ready")
+
+            $('.loginControl').change(function(){
+                
+                var currentElement = $(this);
+                var value = parseInt($(this).val())
+
+                var elem = $('#' + currentElement.attr('name'));
+                elem.val('');
+
+                if (value > 0){
+                    elem.attr("disabled", true)
+                } else{
+                    elem.attr("disabled", false)
+                }
+                
+            });
+
+        });
+        </script>
+</body>
+
+</html>
