@@ -6,103 +6,129 @@
 </head>
 
 <body>
-    <form>
+
+    Post data: <label id="postLabel"></label>
+
+    <form id="nrForm" style="padding-top: 10vh">
         First name: <input type="text" name="fname__101" id="fname__101"><br>
 
 
 
-        <input type="radio" value="0" name="fname__101" class="loginControl" checked>Answer now
+        <input type="radio" value="0" name="fname_nr_101" class="loginControl" checked>Answer now
 
-        <input type="radio" value="1" name="fname__101" class="loginControl">Answer later
+        <input type="radio" value="1" name="fname_nr_101" class="loginControl">Answer later
 
-        <input type="radio" value="2" name="fname__101" class="loginControl">Not tracked
+        <input type="radio" value="2" name="fname_nr_101" class="loginControl">Not tracked
 
-        <input type="radio" value="2" name="fname__101" class="loginControl">Not the way we track it
+        <input type="radio" value="2" name="fname_nr_101" class="loginControl">Not the way we track it
 
         <br> Last name: <input type="text" name="lname__102" id="lname__102"><br>
 
 
 
-        <input type="radio" name="lname__102" value="0" class="loginControl" checked>Answer now
+        <input type="radio" name="lname_nr_102" value="0" class="loginControl">Answer now
 
-        <input type="radio" name="lname__102" value="1" class="loginControl">Answer later
+        <input type="radio" name="lname_nr_102" value="1" class="loginControl" checked>Answer later
 
-        <input type="radio" name="lname__102" value="2" class="loginControl">Not tracked
+        <input type="radio" name="lname_nr_102" value="2" class="loginControl">Not tracked
 
-        <input type="radio" name="lname__102" value="2" class="loginControl">Not the way we track it
+        <input type="radio" name="lname_nr_102" value="2" class="loginControl">Not the way we track it
 
         <br> Last name: <input type="text" name="lname__103" id="lname__103"><br>
 
 
 
-        <input type="radio" name="lname__103" value="0" class="loginControl" checked>Answer now
+        <input type="radio" name="lname_nr_103" value="0" class="loginControl" checked>Answer now
 
-        <input type="radio" name="lname__103" value="1" class="loginControl">Answer later
+        <input type="radio" name="lname_nr_103" value="1" class="loginControl">Answer later
 
-        <input type="radio" name="lname__103" value="2" class="loginControl">Not tracked
+        <input type="radio" name="lname_nr_103" value="2" class="loginControl" >Not tracked
 
-        <input type="radio" name="lname__103" value="2" class="loginControl">Not the way we track it
+        <input type="radio" name="lname_nr_103" value="2" class="loginControl">Not the way we track it
 
         <br> Last name: <input type="text" name="lname__104" id="lname__104"><br>
 
 
 
-        <input type="radio" name="lname__104" value="0" class="loginControl" checked>Answer now
+        <input type="radio" name="lname_nr_104" value="0" class="loginControl">Answer now
 
-        <input type="radio" name="lname__104" value="1" class="loginControl">Answer later
+        <input type="radio" name="lname_nr_104" value="1" class="loginControl">Answer later
 
-        <input type="radio" name="lname__104" value="2" class="loginControl">Not tracked
+        <input type="radio" name="lname_nr_104" value="2" class="loginControl">Not tracked
 
-        <input type="radio" name="lname__104" value="2" class="loginControl">Not the way we track it
+        <input type="radio" name="lname_nr_104" value="2" class="loginControl" checked>Not the way we track it
 
         <br> Last name: <input type="text" name="lname__105" id="lname__105"><br>
 
 
 
-        <input type="radio" name="lname__105" value="0" class="loginControl" checked>Answer now
+        <input type="radio" name="lname_nr_105" value="0" class="loginControl">Answer now
 
-        <input type="radio" name="lname__105" value="1" class="loginControl">Answer later
+        <input type="radio" name="lname_nr_105" value="1" class="loginControl">Answer later
 
-        <input type="radio" name="lname__105" value="2" class="loginControl">Not tracked
+        <input type="radio" name="lname_nr_105" value="2" class="loginControl">Not tracked
 
-        <input type="radio" name="lname__105" value="2" class="loginControl">Not the way we track it
+        <input type="radio" name="lname_nr_105" value="2" class="loginControl" checked>Not the way we track it
 
         <br> Last name: <input type="text" name="lname__106" id="lname__106"><br>
 
 
 
-        <input type="radio" name="lname__106" value="0" class="loginControl" >Answer now
+        <input type="radio" name="lname_nr_106" value="0" class="loginControl">Answer now
 
-        <input type="radio" name="lname__106" value="1" class="loginControl" >Answer later
+        <input type="radio" name="lname_nr_106" value="1" class="loginControl">Answer later
 
-        <input type="radio" name="lname__106" value="2" class="loginControl" >Not tracked
+        <input type="radio" name="lname_nr_106" value="2" class="loginControl">Not tracked
 
-        <input type="radio" name="lname__106" value="2" class="loginControl" >Not the way we track
-        it
+        <input type="radio" name="lname_nr_106" value="2" class="loginControl" checked>Not the way we track it
 
         <br>
+
+        <button type="submit">Submit Form</button>
     </form>
 
     <script>
-        $(document).ready(function(){
-            console.log("jquery ready")
+        $(document).ready(function(){            
+
+            /* Will loop over each radio button assuming that it has the 'nr' class */
+            /* Making the assumption that each radio button will be set to it's initial value via server side? */
+            $('.loginControl').each(function(){
+                
+                    var currentElement = $(this);
+
+                    /* Should only care about checked elements as they dictate input state */
+                    if (currentElement.is(":checked")){
+                    var value = currentElement.val();
+                    setInputValue(currentElement, value);
+                }
+            });
 
             $('.loginControl').change(function(){
                 
                 var currentElement = $(this);
-                var value = parseInt($(this).val())
+                var value = parseInt($(this).val())    
+                setInputValue(currentElement, value);           
+            });
 
-                var elem = $('#' + currentElement.attr('name'));
+            function setInputValue(currentElement, value){
+                var input = currentElement.attr('name');
+                input = input.replace('_nr_', '__')
+
+                var elem = $('#' + input);
                 elem.val('');
 
                 if (value > 0){
                     elem.attr("disabled", true)
                 } else{
                     elem.attr("disabled", false)
-                }
-                
-            });
+                } 
+            }
 
+            $('#nrForm').submit(function(e){
+                e.preventDefault();
+                var post = $(this).serialize();
+                $('#postLabel').text(post);
+            });
         });
         </script>
 </body>
