@@ -99,18 +99,21 @@
                     /* Should only care about checked elements as they dictate input state */
                     if (currentElement.is(":checked")){
                     var value = currentElement.val();
-                    setInputValue(currentElement, value);
+                    setInputState(currentElement, value);
                 }
             });
 
+            /* Will fire on each radio button change */
             $('.loginControl').change(function(){
                 
                 var currentElement = $(this);
                 var value = parseInt($(this).val())    
-                setInputValue(currentElement, value);           
+                setInputState(currentElement, value);           
             });
 
-            function setInputValue(currentElement, value){
+
+            /* Will find the correct input and decide what state it should be in */
+            function setInputState(currentElement, value){
                 var input = currentElement.attr('name');
                 input = input.replace('_nr_', '__')
 
